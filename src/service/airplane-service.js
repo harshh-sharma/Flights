@@ -55,6 +55,9 @@ async function updateAirplane(id,data){
         const response = await airplaneRepository.update(id,data);
         return response;
     } catch (error) {
+        if(error.statusCode == StatusCodes.NOT_FOUND){
+            throw new AppError('The Airplane is found related to this id',error.statusCode);
+        }
         throw  error;
     }
 }

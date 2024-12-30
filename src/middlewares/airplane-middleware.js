@@ -13,18 +13,6 @@ function validateCreateRequest(req,res,next){
     next();
 }
 
-function validateRequest(req,res,next){
-    if(!req.params.id){
-        ErrorResponse.message = 'Something went wrong';
-        ErrorResponse.error = {
-            explanation:'id not found in the incomimg request'
-        }
-        return res.status(StatusCodes.BAD_REQUEST).json(ErrorResponse);
-    }
-    next();
-}
-
 module.exports = {
     validateCreateRequest,
-    validateRequest
 };

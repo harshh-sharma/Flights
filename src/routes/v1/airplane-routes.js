@@ -12,7 +12,8 @@ airplaneRouter
   )
   .get(AirplaneController.getAllAirplanes);
 
-  airplaneRouter.route("/:id").get(AirplaneMiddlewares.validateRequest,AirplaneController.getAirplane)
-                              .delete(AirplaneMiddlewares.validateRequest,AirplaneController.deleteAirplane);
+  airplaneRouter.route("/:id").get(AirplaneController.getAirplane)
+                              .delete(AirplaneController.deleteAirplane)
+                              .patch(AirplaneController.updateAirplane);
 
 module.exports = airplaneRouter;
