@@ -22,17 +22,20 @@ async function createAirplane(data){
 
 async function getAirplane(data){
   try {
-      const response = await airplaneRepository.get(data);
-      return response;
+      const airplane = await airplaneRepository.get(data);
+      return airplane;
   } catch (error) {
+    if(error.statusCode == StatusCodes.NOT_FOUND){
+        throw new AppError('The airplane you are requested is not present',error.statusCode);
+    }
     throw error;
   }
 }
 
 async function getAllAirplane(){
     try {
-        const response = await airplaneRepository.getAll();
-        return response;
+        const airplanes = await airplaneRepository.getAll();
+        return airplanes;
     } catch (error) {
         throw error;
     }
