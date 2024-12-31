@@ -6,6 +6,8 @@ const cityRepository = new CityRepository();
 
 async function createCity(data){
     try {
+        console.log(data);
+        
         const response = await cityRepository.create(data);
         return response;
     } catch (error) {
