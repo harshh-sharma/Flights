@@ -9,6 +9,10 @@ flightRouter
   .post(
     FlightMiddlewares.validateCreateRequest,
     FlightController.createFlight
-  );
+  )
+  .get(FlightController.getAllFlights);
+
+flightRouter.route("/:id").get(FlightController.getFlight)
+                          .patch(FlightMiddlewares.updateRequestValidate,FlightController.updateSeats);
 
 module.exports = flightRouter;
